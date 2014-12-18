@@ -12,21 +12,13 @@ module Sinatra
       end
     end
     def self.registered(app)
-      app.configure do
-        enable :logging
-        file = File.new("#{settings.root}/log/#{settings.environment}.log", 'a+')
-        file.sync = true
-        use Rack::CommonLogger, file
-      end
-
       app.helpers Praat::Helpers
 
       app.post '/extract_formant1' do
         begin
           file = params["data"][:tempfile]
           extract_formant1(file: file)
-        rescue => e
-          logger.info "Error: #{e.inspect}"
+        rescue
           status 400
         end
       end
