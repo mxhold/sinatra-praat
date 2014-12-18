@@ -3,7 +3,7 @@
 A Sinatra extension for running basic Praat commands.
 
 This is not really intended for use outside of the
-[vocal-tract-length](https://github.com/mxhold/vocal-tract-length) project so it
+[vocal_tract_length](https://github.com/mxhold/vocal_tract_length) project so it
 offers very little functionality but may be useful as a reference.
 
 # Usage
@@ -15,7 +15,7 @@ The helper method takes the same arguments as the Praat [To
 Formant...](http://www.fon.hum.uva.nl/praat/manual/Sound__To_Formant__burg____.html)
 command, but the route uses defaults for all the arguments except the file.
 
-The 'POST /extract_formant1` route expects a WAV file as the `data` param and returns its mean F_1.
+The `POST /extract_formant1` route expects a WAV file as the `data` param and returns its mean F<sub>1</sub>.
 
 ## Installation
 
@@ -47,8 +47,6 @@ end
 ```
 
 ## Contributing
-
-Run tests with: `rake test`
 
 1. Fork it ( https://github.com/mxhold/sinatra-praat/fork )
 2. Create your feature branch (`git checkout -b my-new-feature`)
