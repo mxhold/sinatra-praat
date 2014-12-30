@@ -15,11 +15,16 @@ module Sinatra
       app.helpers Praat::Helpers
 
       app.post '/extract_formant1' do
-        begin
+        if params["data"] && params["data"][:tempfile]
           file = params["data"][:tempfile]
-          extract_formant1(file: file)
-        rescue
-          status 400
+          begin
+            extract_formant1(file: file)
+          ensure
+            file.close
+            file.unlink
+          end
+        else
+          status :bad_request
         end
       end
     end
